@@ -5,7 +5,7 @@ import os
 import time
 
 app = Flask(__name__)
-# session 加密秘钥
+
 
 log_dir_name = "logs"
 log_file_name = 'logger-' + time.strftime('%Y-%m-%d', time.localtime(time.time())) + '.log'
@@ -13,6 +13,7 @@ log_file_folder = os.path.abspath(os.path.join(os.path.dirname(__file__), os.par
 make_dir(log_file_folder)
 log_file_location = log_file_folder + os.sep + log_file_name
 
+# session 加密秘钥
 app.config["SECRET_KEY"] = 'af2fad8cfe1f4c5fac4aa5edf6fcc8f3'
 dictConfig({
     'version': 1,
