@@ -4,10 +4,7 @@ from app.home import home
 from app.login import login_filter
 
 
-
 # 拦截认证
-
-
 @app.before_request
 def my_redirect():
     login_filter.login_filter()
