@@ -3,8 +3,7 @@ from logging.config import dictConfig
 from app.util.file_util import make_dir
 import os
 import time
-
-app = Flask(__name__)
+from flask_sqlalchemy import SQLAlchemy
 
 
 log_dir_name = "logs"
@@ -13,8 +12,17 @@ log_file_folder = os.path.abspath(os.path.join(os.path.dirname(__file__), os.par
 make_dir(log_file_folder)
 log_file_location = log_file_folder + os.sep + log_file_name
 
+
+app = Flask(__name__)
+# 数据库配置
+app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:root@127.0.0.1:3306/test"
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = True
 # session 加密秘钥
 app.config["SECRET_KEY"] = 'af2fad8cfe1f4c5fac4aa5edf6fcc8f3'
+
+# 放在数据库配置后执行
+db = SQLAlchemy(app)
+# 日志配置
 dictConfig({
     'version': 1,
     'formatters': {'default': {

@@ -2,6 +2,7 @@ from app import app
 from app.admin import admin
 from app.home import home
 from app.login import login_filter
+from app.book import book
 
 
 # 拦截认证
@@ -13,6 +14,7 @@ def my_redirect():
 
 app.register_blueprint(admin, url_prefix='/admin')
 app.register_blueprint(home, url_prefix='/home')
+app.register_blueprint(book)
 
 if __name__ == '__main__':
     app.run(debug=True)
