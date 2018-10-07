@@ -9,4 +9,5 @@ from app.model.system import Permission
 def book_list():
     permissions = Permission.query.all()
     app.logger.info(permissions)
+    Permission.query.all()
     return json.dumps(Permission.to_list_dict(permissions), ensure_ascii=False)
