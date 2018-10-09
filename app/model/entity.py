@@ -12,7 +12,7 @@ class BaseModel(object):
     # list[object] =>list[dict]
     @staticmethod
     def to_list_dict(list_model):
-        list_dict = ([])
+        list_dict = []
         for model in list_model:
             list_dict.append(model.as_dict())
         return list_dict
